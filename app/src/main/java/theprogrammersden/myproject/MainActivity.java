@@ -45,8 +45,7 @@ public class MainActivity extends AppCompatActivity {
         else{
             items.add("Welcome");
         }
-        //items.add(task.getTask());
-
+        
         itemsAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, items);
         lvItems.setAdapter(itemsAdapter);
@@ -78,12 +77,11 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public boolean onItemLongClick(AdapterView<?> adapter,
                                                    View item, int pos, long id) {
-                        items.remove(pos);
                         String x = itemsAdapter.getItem(pos);
                         Task.getTask(x).delete();
                         itemsAdapter.notifyDataSetChanged();
+                        items.remove(pos);
                         removeAlert.show();
-
                         return true;
                     }
                 });
