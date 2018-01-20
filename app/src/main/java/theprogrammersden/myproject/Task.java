@@ -18,7 +18,7 @@ public class Task extends SugarRecord{
         return task;
     }
 
-    public List<Task> read(){
+    public static List<Task> read(){
         List<Task> lists;
 
         try {
@@ -36,5 +36,13 @@ public class Task extends SugarRecord{
         catch(Exception e){
 
         }
+    }
+    public static Task getTask(String tsk) {
+        List<Task> tasks = read();
+        for (int i = 0; i < tasks.size(); i++) {
+            if (tasks.get(i).getTask().equals(tsk))
+                return tasks.get(i);
+        }
+        return null;
     }
 }

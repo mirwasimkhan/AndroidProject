@@ -79,10 +79,11 @@ public class MainActivity extends AppCompatActivity {
                     public boolean onItemLongClick(AdapterView<?> adapter,
                                                    View item, int pos, long id) {
                         items.remove(pos);
-                        removeAlert.show();
                         String x = itemsAdapter.getItem(pos);
+                        Task.getTask(x).delete();
                         itemsAdapter.notifyDataSetChanged();
-                        List<Task> list = Task.find(Task.class,"where task = ?",x);
+                        removeAlert.show();
+
                         return true;
                     }
                 });
